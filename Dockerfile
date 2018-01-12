@@ -1,5 +1,5 @@
 FROM 32bit/ubuntu:16.04
-ENV MSYS_NO_PATHCONV=1
+ENV MSYS_NO_PATHCONV=0
 
 #RUN apt-get update
 #RUN apt-get install -y nodejs npm libcurl4-openssl-dev
