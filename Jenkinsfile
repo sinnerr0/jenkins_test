@@ -20,8 +20,12 @@ pipeline {
     	stage('Deploy') {
     		steps {
     			echo "Deploy"
-                echo currentBuild.result
     		}
     	}
     }
 }
+if grep -q PATTERN file.txt; then
+    echo found
+else
+    echo not found
+fi
