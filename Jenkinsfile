@@ -1,19 +1,19 @@
 pipeline {
-    agent { dockerfile true }
+    agent { docker '32bit/ubuntu:16.04' }
     stages {
         stage('Build') {
             steps {
-                sh 'build.sh'
+                sh 'echo "Build!!!!!!!!!"'
             }
         }
         stage('Test') {
             steps {
-                sh 'test.sh'
+                sh 'echo "Test!!!!!!!!!"'
             }
         }
         stage('Deploy') {
             steps {
-                sh 'deploy.sh'
+                sh 'echo "Deploy!!!!!!!!!"'
             }
         }
     }
