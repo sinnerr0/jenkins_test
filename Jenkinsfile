@@ -2,9 +2,9 @@ pipeline {
     agent none
     stages {
         stage('Build') {
+            agent { dockerfile true }
             steps {
                 echo "Build!!!"
-                sh 'dir'
             }
         }
         stage('Test') {
