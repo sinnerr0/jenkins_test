@@ -13,8 +13,7 @@ pipeline {
             	echo "Cloud Server Start"
                 sh 'cd /wind3 && node simple_server.js 8095 test package/src http://localhost:8080/package/res/ 8080 > /log 2>&1 &'
                 echo "Headless Emulator Start"
-                sh 'cd /wind3_headless && ./wind.sh && grep -q -e "stack:Error" /log || true'
-                sh 'cat /log'
+                sh 'cd /wind3_headless && ./wind.sh && grep -q -e "stack:Error" /log'
             }
         }
     	stage('Deploy') {
