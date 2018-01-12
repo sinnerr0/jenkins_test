@@ -1,11 +1,9 @@
-pipeline {
-    agent { dockerfile true }
-    stages {
-        stage('Test') {
-            steps {
-                sh 'node --version'
-                sh 'svn --version'
-            }
-        }
+node {
+    checkout scm
+
+    def ubuntu = docker.build('32bit/ubuntu:16.04')
+
+    ubuntu.inside {
+        sh 'echo "Test!!!!!!!!##########"'
     }
 }
