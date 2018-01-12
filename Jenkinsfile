@@ -4,17 +4,17 @@ pipeline {
         stage('Build') {
             agent { dockerfile true }
             steps {
-                echo "Build!!!"
+                build.sh
             }
         }
         stage('Test') {
             steps {
-                echo "Test!!!"
+                test.sh
             }
         }
         stage('Deploy') {
             steps {
-                echo "Deploy!!!"
+                deploy.sh
             }
         }
     }
