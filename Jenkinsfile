@@ -15,7 +15,7 @@ pipeline {
                 sleep 1
                 echo "Headless Emulator Start"
                 sh 'cd /wind3_headless && ./wind.sh && grep -q -e "stack:Error" /log || true'
-                sh 'grep /log'
+                sh 'cat /log'
             }
         }
     	stage('Deploy') {
