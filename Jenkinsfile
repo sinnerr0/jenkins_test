@@ -11,8 +11,7 @@ pipeline {
         stage('Test') {
             steps {
             	echo "Cloud Server Start"
-                sh 'node simple_server.js 8095 test package/src http://localhost:8080/package/res/ 8080 > /log 2>&1 &'
-                sleep 1
+                sh 'cd /wind3 && node simple_server.js 8095 test package/src http://localhost:8080/package/res/ 8080 > /log 2>&1 &'
                 echo "Headless Emulator Start"
                 sh 'cd /wind3_headless && ./wind.sh && grep -q -e "stack:Error" /log || true'
                 sh 'cat /log'
