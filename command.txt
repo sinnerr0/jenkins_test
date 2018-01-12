@@ -1,0 +1,9 @@
+wait 2000
+key s
+wait 2000
+key enter
+wait 2000
+key enter
+wait 2000
+key q
+exit

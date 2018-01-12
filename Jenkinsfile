@@ -1,19 +1,20 @@
 pipeline {
-    agent any
+    agent { dockerfile true }
     stages {
         stage('Build') {
             steps {
-                echo 'Building'
+                sh 'echo "Build"'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing'
+                sh 'node simple_server.js 8095 test package/src http://localhost:8080/package/res/ 8080 > /log 2>&1 &'
+                sh 'cd ../wind3_headless && ./wind.sh && grep -q -e "stack:Error" /log && exit 0'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying'
+                sh 'echo "Deploy"'
             }
         }
     }
