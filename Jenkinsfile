@@ -4,17 +4,19 @@ pipeline {
         stage('Build') {
             agent { dockerfile true }
             steps {
-                build.sh
+                sh 'build.sh'
             }
         }
         stage('Test') {
+            agent any
             steps {
-                test.sh
+                sh 'test.sh'
             }
         }
         stage('Deploy') {
+            agent any
             steps {
-                deploy.sh
+                sh 'deploy.sh'
             }
         }
     }
