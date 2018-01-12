@@ -10,13 +10,13 @@ pipeline {
         stage('Test') {
             agent { dockerfile true }
             steps {
-                sh 'echo "Test!!!"'
+                echo "Test!!!"
             }
         }
         stage('Deploy') {
             agent any
             steps {
-                sh 'echo "Deploy!!!"'
+                echo "Deploy!!!"
             }
         }
     }
