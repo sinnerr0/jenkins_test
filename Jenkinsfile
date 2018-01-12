@@ -3,11 +3,24 @@ pipeline {
         dockerfile true
     }
     stages {
-        stage('Example') {
+    	stage('Build') {
+    		steps {
+    			echo "Build"
+    		}
+    	}
+        stage('Test') {
             steps {
+            	echo "Cloud Server Start"
                 sh 'node simple_server.js 8095 test package/src http://localhost:8080/package/res/ 8080 > /log 2>&1 &'
-                sh 'cd /wind3_headless && ./wind.sh && grep -e "stack:Error" /log'
+                sleep 1
+                echo "Headless Emulator Start"
+                sh 'cd /wind3_headless && ./wind.sh && grep -q -e "stack:Error" /log'
             }
         }
+    	stage('Deploy') {
+    		steps {
+    			echo "Deploy"
+    		}
+    	}
     }
 }
