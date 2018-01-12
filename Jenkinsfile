@@ -8,7 +8,7 @@ pipeline {
             }
         }
         stage('Test') {
-            agent { dockerfile true }
+            agent any
             steps {
                 echo "Test!!!"
             }
