@@ -1,20 +1,18 @@
 pipeline {
-    agent none
+    agent { dockerfile true }
     stages {
         stage('Build') {
-            agent any
             steps {
                 echo "Build!!!"
+                pwd
             }
         }
         stage('Test') {
-            agent any
             steps {
                 echo "Test!!!"
             }
         }
         stage('Deploy') {
-            agent any
             steps {
                 echo "Deploy!!!"
             }
