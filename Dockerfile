@@ -15,5 +15,5 @@ RUN npm install
 ENV NODE_PATH=/wind3:/wind3/package/node_modules
 WORKDIR /wind3
 
-# node simple_server.js 8095 test package/src http://localhost:8080/package/res/ 8080 > /log 2>&1 &
-# cd /wind3_headless && ./wind.sh && grep -q -e "stack:Error" /log && exit 0
+RUN node simple_server.js 8095 test package/src http://localhost:8080/package/res/ 8080 > /log 2>&1 &
+RUN cd /wind3_headless && ./wind.sh && grep -q -e "stack:Error" /log && exit 0
