@@ -24,8 +24,3 @@ pipeline {
     	}
     }
 }
-if grep -q PATTERN file.txt; then
-    echo found
-else
-    echo not found
-fi
