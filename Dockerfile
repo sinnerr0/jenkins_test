@@ -1,7 +1,7 @@
 FROM 32bit/ubuntu:16.04
 
 RUN apt-get update
-RUN apt-get install -y nodejs npm libcurl4-openssl-dev
+RUN apt-get install -y make nodejs npm libcurl4-openssl-dev
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 
 ADD wind3_1.09.052-2d.tar.gz .
