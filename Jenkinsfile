@@ -27,4 +27,18 @@ pipeline {
       }
     }
   }
+  post {
+      always {
+          echo 'Finished'
+      }
+      success {
+          echo 'I succeeeded!'
+      }
+      unstable {
+          echo 'I am unstable'
+      }
+      failure {
+          echo 'I failed :('
+      }
+  }
 }
