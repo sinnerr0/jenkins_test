@@ -18,7 +18,12 @@ pipeline {
         echo 'Headless Emulator Start'
         sh 'cd /wind3_headless && ./wind.sh || true'
         sh 'cat /log'
-        sh '! grep -q "stack:Error" /log'
+        sh '! grep -q "stack:Error" /log'        
+      }
+      post {
+        failure {
+          mail to: ks.choi@alticast.com, subject: 'Jenkins Cloud Test failed', body: ''
+        }
       }
     }
     stage('Deploy') {
