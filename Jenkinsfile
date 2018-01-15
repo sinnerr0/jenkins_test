@@ -39,6 +39,9 @@ pipeline {
       }
       failure {
           echo 'I failed :('
+          mail to: 'ks.choi@alticast.com',
+               subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+               body: "Something is wrong with ${env.BUILD_URL}"
       }
   }
 }
