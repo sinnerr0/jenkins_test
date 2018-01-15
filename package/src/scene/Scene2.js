@@ -71,7 +71,7 @@ W.Mod.define({
         },
         onKeyPressed: function(evt) {
             d.Util.print('Scene2 onKeyPressed');
-//             throw new Error('Test!!!!!!!!');
+            throw new Error('Test!!!!!!!!');
             this.ctx.finish();
             return true;
         }
