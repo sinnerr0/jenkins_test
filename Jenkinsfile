@@ -10,14 +10,6 @@ pipeline {
       steps {
         echo 'Build'
       }  
-      post {
-          always {
-              echo 'Finished'
-              mail to: 'ks.choi@alticast.com',
-                   subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-                   body: "Something is wrong with ${env.BUILD_URL}"
-          }
-      }
     }
     stage('Test') {
       steps {
