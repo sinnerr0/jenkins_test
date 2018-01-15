@@ -27,9 +27,4 @@ pipeline {
       }
     }
   }
-  post {
-    failure {
-      mail to: ks.choi@alticast.com, subject: 'Jenkins Cloud Test failed', body: ''
-    }
-  }
 }
