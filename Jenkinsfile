@@ -19,6 +19,14 @@ pipeline {
         sh 'cd /wind3_headless && ./wind.sh || true'
         sh 'cat /log'
         sh '! grep -q "stack:Error" /log'        
+      }      
+      post {
+          always {
+              echo 'Finished'
+              mail to: 'ks.choi@alticast.com',
+                   subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+                   body: "Something is wrong with ${env.BUILD_URL}"
+          }
       }
     }
     stage('Deploy') {
@@ -26,22 +34,5 @@ pipeline {
         echo 'Deploy'
       }
     }
-  }
-  post {
-      always {
-          echo 'Finished'
-      }
-      success {
-          echo 'I succeeeded!'
-      }
-      unstable {
-          echo 'I am unstable'
-      }
-      failure {
-          echo 'I failed :('
-          mail to: 'ks.choi@alticast.com',
-               subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-               body: "Something is wrong with ${env.BUILD_URL}"
-      }
   }
 }
