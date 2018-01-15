@@ -25,14 +25,14 @@ pipeline {
       steps {
         echo 'Deploy'
       }
+    }  
+    post {
+        always {
+            echo 'Finished'
+            mail to: 'ks.choi@alticast.com',
+                 subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+                 body: "Something is wrong with ${env.BUILD_URL}"
+        }
     }
-  }  
-  post {
-      always {
-          echo 'Finished'
-          mail to: 'ks.choi@alticast.com',
-               subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-               body: "Something is wrong with ${env.BUILD_URL}"
-      }
   }
 }
