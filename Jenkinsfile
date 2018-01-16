@@ -22,7 +22,7 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploy'
-        archiveArtifacts(artifacts: '/wind3/package.tar.gz', fingerprint: true)
+        archiveArtifacts(artifacts: 'package.tar.gz', fingerprint: true)
       }
     }
   }
