@@ -9,6 +9,7 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Build'
+        sh 'tar czf build package.tar.gz package/'
       }  
     }
     stage('Test') {
@@ -24,6 +25,7 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploy'
+        archiveArtifacts artifacts: 'package.tar.gz', fingerprint: true
       }
     }
   }
