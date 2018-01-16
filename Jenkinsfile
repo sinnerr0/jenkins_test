@@ -6,6 +6,7 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Build'
+        sh 'pwd'
         sh 'tar czf build package.tar.gz package/'
       }
     }
