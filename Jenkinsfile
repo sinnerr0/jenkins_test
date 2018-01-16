@@ -2,15 +2,12 @@ pipeline {
   agent {
     dockerfile true
   }
-  triggers {
-    pollSCM('* * * * *')
-  }
   stages {
     stage('Build') {
       steps {
         echo 'Build'
         sh 'tar czf build package.tar.gz package/'
-      }  
+      }
     }
     stage('Test') {
       steps {
@@ -19,14 +16,17 @@ pipeline {
         echo 'Headless Emulator Start'
         sh 'cd /wind3_headless && ./wind.sh || true'
         sh 'cat /log'
-        sh '! grep -q "stack:Error" /log'        
+        sh '! grep -q "stack:Error" /log'
       }
     }
     stage('Deploy') {
       steps {
         echo 'Deploy'
-        archiveArtifacts artifacts: 'package.tar.gz', fingerprint: true
+        archiveArtifacts(artifacts: 'package.tar.gz', fingerprint: true)
       }
     }
+  }
+  triggers {
+    pollSCM('* * * * *')
   }
 }
